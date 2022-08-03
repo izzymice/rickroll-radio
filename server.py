@@ -25,7 +25,23 @@ async def fake_video_streamer():
 @app.get("/")
 def main(request: fastapi.Request):
     return templates.TemplateResponse("home.html", {"request": request})
-   # return fastapi.responses.RedirectResponse("/radio.mp3", 302)
+
+@app.get("/docs")
+def main(request: fastapi.Request):
+    return fastapi.responses.RedirectResponse("/")
+
+@app.get("/redoc")
+def main(request: fastapi.Request):
+    return fastapi.responses.RedirectResponse("/")
+
+@app.get("/docs/oauth2-redirect")
+def main(request: fastapi.Request):
+    return fastapi.responses.RedirectResponse("/")
+
+@app.get("/openapi.json")
+def main(request: fastapi.Request):
+    return fastapi.responses.RedirectResponse("/")
+
 
 @app.get("/radio.mp3")
 async def main():
