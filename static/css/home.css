@@ -1,0 +1,34 @@
+/*
+Pallete:
+#363432
+#196774 # first
+#90A19D # secondary
+#F0941F # links
+#EF6024
+*/
+
+body {
+    background-color: #196774;
+
+    font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+    color: #F0941F;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin: auto;
+}
+
+.links {
+    outline-width: 5px;
+    outline-style: solid;
+    outline-color: #90A19D;
+    margin-left: 20%;
+    margin-right: 20%;
+}
