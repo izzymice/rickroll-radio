@@ -2,6 +2,8 @@ import fastapi, uvicorn, asyncio
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+# some spaces and ussles stuff are to increse size of this file like this bc replit thinks its html without the ussles stuff so ye dont pull request that
+
 app = fastapi.FastAPI(
     title="ash things",
     description="A side where ash keeps his screenshot and links.",
@@ -10,21 +12,31 @@ app = fastapi.FastAPI(
 
 debug = True
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="static/html")
-
-some_file_path = "rickroll.mp3"
+app.mount(
+    "/static", 
+    StaticFiles(
+        directory="static"
+    ), 
+    name="static"
+)
+templates = Jinja2Templates(
+    directory="static/html"
+)
 
 file = None
 
 async def fake_video_streamer():
     while True:
-        with open(some_file_path, "rb") as f: yield f.read()
+        with open("rickroll.mp3", "rb") as f: 
+            yield f.read()
         await asyncio.sleep(3)
 
 @app.get("/")
 def main(request: fastapi.Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+    return templates.TemplateResponse(
+        "home.html", 
+        {"request": request}
+    )
 
 @app.get("/docs")
 def main(request: fastapi.Request):
@@ -45,7 +57,12 @@ def main(request: fastapi.Request):
 
 @app.get("/radio.mp3")
 async def main():
-    return fastapi.responses.StreamingResponse(fake_video_streamer(), media_type="audio/mp3")
+    return fastapi.responses.StreamingResponse(
+        fake_video_streamer(), 
+        media_type="audio/mp3"
+    )
+
+
 
 if __name__ == "__main__":
     config = uvicorn.Config(
@@ -54,5 +71,6 @@ if __name__ == "__main__":
         port=80,
         reload=debug
     )
+
     server = uvicorn.Server(config=config)
     server.run()
