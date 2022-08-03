@@ -39,24 +39,24 @@ def main(request: fastapi.Request):
     )
 
 @app.get("/docs")
-def main(request: fastapi.Request):
+def docs(request: fastapi.Request):
     return fastapi.responses.RedirectResponse("/")
 
 @app.get("/redoc")
-def main(request: fastapi.Request):
+def redoc(request: fastapi.Request):
     return fastapi.responses.RedirectResponse("/")
 
 @app.get("/docs/oauth2-redirect")
-def main(request: fastapi.Request):
+def oauth2(request: fastapi.Request):
     return fastapi.responses.RedirectResponse("/")
 
 @app.get("/openapi.json")
-def main(request: fastapi.Request):
+def openapi(request: fastapi.Request):
     return fastapi.responses.RedirectResponse("/")
 
 
 @app.get("/radio.mp3")
-async def main():
+async def radio():
     return fastapi.responses.StreamingResponse(
         fake_video_streamer(), 
         media_type="audio/mp3"
